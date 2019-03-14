@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.chart.BubbleChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kmeans.FXMLPrincipalController">
+   <right>
+      <VBox alignment="TOP_CENTER" prefHeight="473.0" prefWidth="194.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton onMouseClicked="#evtKmeans" text="Agrupar" />
+         </children>
+      </VBox>
+   </right>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="884.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="215.0" spacing="25.0">
+               <children>
+                  <JFXRadioButton fx:id="rbCentroid" selected="true" text="Centroid" />
+                  <JFXRadioButton fx:id="cbPonto" text="Ponto" />
+               </children>
+            </HBox>
+            <JFXCheckBox fx:id="chAleatorio" text="Aleatório" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <BubbleChart fx:id="bcKmeans" title="K-Means" BorderPane.alignment="CENTER">
+        <xAxis>
+          <NumberAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BubbleChart>
+   </center>
+</BorderPane>
