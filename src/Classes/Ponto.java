@@ -9,12 +9,12 @@ package Classes;
  *
  * @author luis
  */
-public class Ponto
+public abstract class Ponto
 {
-    private Integer x;
-    private Integer y;
+    protected Integer x;
+    protected Integer y;
     
-    private int []vetDistancia;
+   
 
     public Ponto(Integer x, Integer y)
     {
@@ -41,16 +41,5 @@ public class Ponto
     {
         this.y = y;
     }
-
-    public int[] getVetDistancia()
-    {
-        return vetDistancia;
-    }
-
-    public void setVetDistancia(int[] vetDistancia)
-    {
-        this.vetDistancia = vetDistancia;
-    }
-    
     
 }
