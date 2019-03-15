@@ -13,7 +13,7 @@ public abstract class Ponto
 {
     protected Integer x;
     protected Integer y;
-    
+    protected Double tam = 4d;
    
 
     public Ponto(Integer x, Integer y)
@@ -40,6 +40,16 @@ public abstract class Ponto
     public void setY(Integer y)
     {
         this.y = y;
+    }
+
+    public Double getTam()
+    {
+        return tam;
+    }
+
+    public void setTam(Double tam)
+    {
+        this.tam = tam;
     }
     
 }

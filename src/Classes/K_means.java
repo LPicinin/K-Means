@@ -30,23 +30,31 @@ public class K_means
         int[] np = new int[2];//novo ponto
         boolean flag = true;
         Centroid aux;
-        for (int i = 0; i < elementos.size(); i++)
+        iniciaDados();
+        try
         {
-            elementos.get(i).calculaDistancias(centroides);//calcula distancia do elemento entre cada um dos centroids e salva em uma lista interna
-            aux = elementos.get(i).centroidePertencente(centroides);
-            aux.getCluster().add(elementos.get(i));//adiciona o elemento encontrado no cluster do centroid
-                    
-        }
-        for (int i = 0; i < centroides.size(); i++)
-        {
-            np = centroides.get(i).calculaNovaCoordenada();
-            if (flag)
+            for (int i = 0; i < elementos.size(); i++)
             {
-                flag = flag && (np[0] == centroides.get(i).getX() && np[1] == centroides.get(i).getY());
+                elementos.get(i).calculaDistancias(centroides);//calcula distancia do elemento entre cada um dos centroids e salva em uma lista interna
+                aux = elementos.get(i).centroidePertencente(centroides);
+                aux.getCluster().add(elementos.get(i));//adiciona o elemento encontrado no cluster do centroid
+
             }
-            centroides.get(i).setX(np[0]);
-            centroides.get(i).setY(np[1]);
+            for (int i = 0; i < centroides.size(); i++)
+            {
+                np = centroides.get(i).calculaNovaCoordenada();
+                if (flag)
+                {
+                    flag = flag && (np[0] == centroides.get(i).getX() && np[1] == centroides.get(i).getY());
+                }
+                centroides.get(i).setX(np[0]);
+                centroides.get(i).setY(np[1]);
+            }
+        } catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
         }
+
         return flag;
     }
 
@@ -55,20 +63,35 @@ public class K_means
         XYChart.Series sCentroid = new XYChart.Series();
         XYChart.Series sElemento = new XYChart.Series();
         sCentroid.setName("Centroides");
-        
+
         for (int i = 0; i < centroides.size(); i++)
         {
-            sCentroid.getData().add(new XYChart.Data(centroides.get(i).getX(), centroides.get(i).getY(), 1));
+            sCentroid.getData().add(new XYChart.Data(centroides.get(i).getX(), 
+                    centroides.get(i).getY(), centroides.get(i).getTam()));
+            
             sElemento.setName(Integer.toString(i));
             for (int j = 0; j < centroides.get(i).getCluster().size(); j++)
             {
                 sElemento.getData().add(new XYChart.Data(
-                        centroides.get(i).getCluster().get(j).getX(), 
-                        centroides.get(i).getCluster().get(j).getY(), 1));
+                        centroides.get(i).getCluster().get(j).getX(),
+                        centroides.get(i).getCluster().get(j).getY(),
+                        centroides.get(i).getCluster().get(j).getTam()));
             }
             bcKmeans.getData().add(sElemento);
-            sElemento.getData().clear();
+            sElemento = new XYChart.Series();
         }
         bcKmeans.getData().add(sCentroid);
+    }
+
+    private void iniciaDados()
+    {
+        for (int i = 0; i < centroides.size(); i++)
+        {
+            centroides.get(i).getCluster().clear();
+        }
+        for (int i = 0; i < elementos.size(); i++)
+        {
+            elementos.get(i).getListaDistancia().clear();
+        }
     }
 }

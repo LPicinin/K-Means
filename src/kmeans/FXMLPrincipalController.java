@@ -68,6 +68,10 @@ public class FXMLPrincipalController implements Initializable
     @FXML
     private void evtKmeans(MouseEvent event)
     {
+        if(!bcKmeans.getData().isEmpty())
+            bcKmeans.getData().clear();//limpa o gráfico
+        
+        kmeans.kmeans();
         kmeans.atualizaGrafico(bcKmeans);
     }
 
