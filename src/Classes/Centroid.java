@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ public class Centroid extends Ponto
     public Centroid(Integer x, Integer y)
     {
         super(x, y);
+        cluster = new ArrayList<>();
     }
     public int[] calculaNovaCoordenada()
     {

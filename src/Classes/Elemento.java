@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Elemento extends Ponto
     public Elemento(Integer x, Integer y)
     {
         super(x, y);
+        listaDistancia = new ArrayList<>();
     }
 
     public List<Double> getListaDistancia()
