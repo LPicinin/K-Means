@@ -5,16 +5,18 @@
  */
 package kmeans;
 
+import Classes.Centroid;
+import Classes.Elemento;
+import Classes.K_means;
+import Util.Util;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BubbleChart;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -23,7 +25,7 @@ import javafx.scene.input.MouseEvent;
  */
 public class FXMLPrincipalController implements Initializable
 {
-
+    private K_means kmeans;
     @FXML
     private JFXRadioButton rbCentroid;
     @FXML
@@ -36,6 +38,7 @@ public class FXMLPrincipalController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        iniciaComponentes();
         /*XYChart.Series series = new XYChart.Series();
         series.setName("work");
 
@@ -58,6 +61,14 @@ public class FXMLPrincipalController implements Initializable
     @FXML
     private void evtKmeans(MouseEvent event)
     {
+        kmeans.atualizaGrafico(bcKmeans);
+    }
+
+    private void iniciaComponentes()
+    {
+        List<Centroid> lc = Util.getCentroides(3, (int)bcKmeans.getWidth(), (int)bcKmeans.getHeight());
+        List<Elemento> le = Util.getElemento(10, (int)bcKmeans.getWidth(), (int)bcKmeans.getHeight());
+        kmeans = new K_means(lc, le);
     }
 
 }

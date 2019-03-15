@@ -6,17 +6,18 @@
 package Classes;
 
 import java.util.List;
+import javafx.scene.chart.BubbleChart;
 
 /**
  *
  * @author luis
  */
-public class Kmeans
+public class K_means
 {
     private List<Centroid> centroides;
     private List<Elemento> elementos;
 
-    public Kmeans(List<Centroid> centroides, List<Elemento> elementos)
+    public K_means(List<Centroid> centroides, List<Elemento> elementos)
     {
         this.centroides = centroides;
         this.elementos = elementos;
@@ -42,5 +43,10 @@ public class Kmeans
             centroides.get(i).setY(np[1]);
         }
         return flag;
+    }
+
+    public void atualizaGrafico(BubbleChart<?, ?> bcKmeans)
+    {
+        
     }
 }
