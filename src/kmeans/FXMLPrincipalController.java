@@ -71,14 +71,14 @@ public class FXMLPrincipalController implements Initializable
         if(!bcKmeans.getData().isEmpty())
             bcKmeans.getData().clear();//limpa o gráfico
         
-        kmeans.kmeans();
+        while(!kmeans.kmeans()){};
         kmeans.atualizaGrafico(bcKmeans);
     }
 
     private void iniciaComponentes()
     {
         List<Centroid> lc = Util.getCentroides(3, 500, 500);
-        List<Elemento> le = Util.getElemento(10, 500, 500);
+        List<Elemento> le = Util.getElemento(100, 500, 500);
         /*
         List<Centroid> lc = Util.getCentroides(3, (int)bcKmeans.getWidth(), (int)bcKmeans.getHeight());
         List<Elemento> le = Util.getElemento(10, (int)bcKmeans.getWidth(), (int)bcKmeans.getHeight());
