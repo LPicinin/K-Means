@@ -31,6 +31,7 @@ public class Centroid extends Ponto
             sx += cluster.get(i).getX();
             sy += cluster.get(i).getY();
         }
+        s = (s == 0)? 1 : s;//evitar divisão por zero
         int []p = {sx/s, sy/s};
         return p;
     }

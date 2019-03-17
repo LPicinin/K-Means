@@ -66,9 +66,9 @@ public class K_means
 
         for (int i = 0; i < centroides.size(); i++)
         {
-            sCentroid.getData().add(new XYChart.Data(centroides.get(i).getX(), 
+            sCentroid.getData().add(new XYChart.Data(centroides.get(i).getX(),
                     centroides.get(i).getY(), centroides.get(i).getTam()));
-            
+
             sElemento.setName(Integer.toString(i));
             for (int j = 0; j < centroides.get(i).getCluster().size(); j++)
             {
@@ -93,5 +93,29 @@ public class K_means
         {
             elementos.get(i).getListaDistancia().clear();
         }
+    }
+
+    public void primeiraVez(BubbleChart<?, ?> bcKmeans)
+    {
+        XYChart.Series sCentroid = new XYChart.Series();
+        XYChart.Series sElemento = new XYChart.Series();
+        sCentroid.setName("Centroides");
+
+        for (int i = 0; i < centroides.size(); i++)
+        {
+            sCentroid.getData().add(new XYChart.Data(centroides.get(i).getX(),
+                    centroides.get(i).getY(), centroides.get(i).getTam()));
+        }
+        bcKmeans.getData().add(sCentroid);
+
+        sElemento.setName("Elementos");
+        for (int j = 0; j < elementos.size(); j++)
+        {
+            sElemento.getData().add(new XYChart.Data(
+                    elementos.get(j).getX(),
+                    elementos.get(j).getY(),
+                    elementos.get(j).getTam()));
+        }
+        bcKmeans.getData().add(sElemento);
     }
 }
