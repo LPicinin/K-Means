@@ -38,7 +38,6 @@ public class K_means
                 elementos.get(i).calculaDistancias(centroides);//calcula distancia do elemento entre cada um dos centroids e salva em uma lista interna
                 aux = elementos.get(i).centroidePertencente(centroides);
                 aux.getCluster().add(elementos.get(i));//adiciona o elemento encontrado no cluster do centroid
-
             }
             for (int i = 0; i < centroides.size(); i++)
             {
@@ -50,6 +49,13 @@ public class K_means
                 centroides.get(i).setX(np[0]);
                 centroides.get(i).setY(np[1]);
             }
+            for (int i = 0; i < elementos.size(); i++)//reorganiza as cores dos elementos deacordo com as novas posições dos centroides
+            {
+                elementos.get(i).calculaDistancias(centroides);//calcula distancia do elemento entre cada um dos centroids e salva em uma lista interna
+                aux = elementos.get(i).centroidePertencente(centroides);
+                aux.getCluster().add(elementos.get(i));//adiciona o elemento encontrado no cluster do centroid
+            }
+            
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
@@ -69,7 +75,7 @@ public class K_means
             sCentroid.getData().add(new XYChart.Data(centroides.get(i).getX(),
                     centroides.get(i).getY(), centroides.get(i).getTam()));
 
-            sElemento.setName(Integer.toString(i));
+            sElemento.setName("Cluster: "+Integer.toString(i+1));
             for (int j = 0; j < centroides.get(i).getCluster().size(); j++)
             {
                 sElemento.getData().add(new XYChart.Data(
