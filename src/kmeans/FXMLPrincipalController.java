@@ -46,7 +46,7 @@ public class FXMLPrincipalController implements Initializable
     private void evtKmeans(MouseEvent event)
     {
         boolean flag = false;
-        while(!flag)
+        //while(!flag)
         {
             flag = kmeans.kmeans();
         }
